@@ -30,11 +30,11 @@ if [[ ! -f "$GENESIS_FILE" ]]; then
   # Set moniker and chain-id for Ethermint (Moniker can be anything, chain-id must be an integer)
   pointguard init $MONIKER --chain-id $CHAINID
 
-  # Change parameter token denominations to axfury
-  cat $HOME/.pointguard/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="axfury"' > $HOME/.pointguard/config/tmp_genesis.json && mv $HOME/.pointguard/config/tmp_genesis.json $HOME/.pointguard/config/genesis.json
-  cat $HOME/.pointguard/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="axfury"' > $HOME/.pointguard/config/tmp_genesis.json && mv $HOME/.pointguard/config/tmp_genesis.json $HOME/.pointguard/config/genesis.json
-  cat $HOME/.pointguard/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="axfury"' > $HOME/.pointguard/config/tmp_genesis.json && mv $HOME/.pointguard/config/tmp_genesis.json $HOME/.pointguard/config/genesis.json
-  cat $HOME/.pointguard/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="axfury"' > $HOME/.pointguard/config/tmp_genesis.json && mv $HOME/.pointguard/config/tmp_genesis.json $HOME/.pointguard/config/genesis.json
+  # Change parameter token denominations to afury
+  cat $HOME/.pointguard/config/genesis.json | jq '.app_state["staking"]["params"]["bond_denom"]="afury"' > $HOME/.pointguard/config/tmp_genesis.json && mv $HOME/.pointguard/config/tmp_genesis.json $HOME/.pointguard/config/genesis.json
+  cat $HOME/.pointguard/config/genesis.json | jq '.app_state["crisis"]["constant_fee"]["denom"]="afury"' > $HOME/.pointguard/config/tmp_genesis.json && mv $HOME/.pointguard/config/tmp_genesis.json $HOME/.pointguard/config/genesis.json
+  cat $HOME/.pointguard/config/genesis.json | jq '.app_state["gov"]["deposit_params"]["min_deposit"][0]["denom"]="afury"' > $HOME/.pointguard/config/tmp_genesis.json && mv $HOME/.pointguard/config/tmp_genesis.json $HOME/.pointguard/config/genesis.json
+  cat $HOME/.pointguard/config/genesis.json | jq '.app_state["mint"]["params"]["mint_denom"]="afury"' > $HOME/.pointguard/config/tmp_genesis.json && mv $HOME/.pointguard/config/tmp_genesis.json $HOME/.pointguard/config/genesis.json
 
   # increase block time (?)
   cat $HOME/.pointguard/config/genesis.json | jq '.consensus_params["block"]["time_iota_ms"]="1000"' > $HOME/.pointguard/config/tmp_genesis.json && mv $HOME/.pointguard/config/tmp_genesis.json $HOME/.pointguard/config/genesis.json
@@ -74,10 +74,10 @@ if [[ ! -f "$GENESIS_FILE" ]]; then
   fi
 
   # Allocate genesis accounts (cosmos formatted addresses)
-  pointguard add-genesis-account $KEY 100000000000000000000000000axfury --keyring-backend $KEYRING
+  pointguard add-genesis-account $KEY 100000000000000000000000000afury --keyring-backend $KEYRING
 
   # Sign genesis transaction
-  pointguard gentx $KEY 1000000000000000000000axfury --keyring-backend $KEYRING --chain-id $CHAINID
+  pointguard gentx $KEY 1000000000000000000000afury --keyring-backend $KEYRING --chain-id $CHAINID
 
   # Collect genesis tx
   pointguard collect-gentxs

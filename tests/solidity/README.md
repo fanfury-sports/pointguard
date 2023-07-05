@@ -53,7 +53,7 @@ The [`init-test-node.sh`](./init-test-node.sh) script sets up ethermint with the
 - `fury1jcltmuhplrdcwp7stlr4hlhlhgd4htqhrhxye8` (user 2)
     - `0x963EBDf2e1f8DB8707D05FC75bfeFFBa1B5BaC17`
 
-Each with roughly 100 ETH available (1e18 xfury).
+Each with roughly 100 ETH available (1e18 fury).
 
 Running `pointguard keys list --keyring-backend=test` should output:
 

@@ -14,7 +14,7 @@
       },
     },
     'app-config': {
-      'minimum-gas-prices': '0axfury',
+      'minimum-gas-prices': '0afury',
       'index-events': ['ethereum_tx.ethereumTxHash'],
       'json-rpc': {
         address: '0.0.0.0:{EVMRPC_PORT}',
@@ -26,25 +26,25 @@
       },
     },
     validators: [{
-      coins: '1000000000000000000stake,10000000000000000000000axfury',
+      coins: '1000000000000000000stake,10000000000000000000000afury',
       staked: '1000000000000000000stake',
       mnemonic: '${VALIDATOR1_MNEMONIC}',
     }, {
-      coins: '1000000000000000000stake,10000000000000000000000axfury',
+      coins: '1000000000000000000stake,10000000000000000000000afury',
       staked: '1000000000000000000stake',
       mnemonic: '${VALIDATOR2_MNEMONIC}',
     }],
     accounts: [{
       name: 'community',
-      coins: '10000000000000000000000axfury',
+      coins: '10000000000000000000000afury',
       mnemonic: '${COMMUNITY_MNEMONIC}',
     }, {
       name: 'signer1',
-      coins: '20000000000000000000000axfury',
+      coins: '20000000000000000000000afury',
       mnemonic: '${SIGNER1_MNEMONIC}',
     }, {
       name: 'signer2',
-      coins: '30000000000000000000000axfury',
+      coins: '30000000000000000000000afury',
       mnemonic: '${SIGNER2_MNEMONIC}',
     }],
     genesis: {
@@ -57,7 +57,7 @@
       app_state: {
         evm: {
           params: {
-            evm_denom: 'axfury',
+            evm_denom: 'afury',
           },
         },
         gov: {
@@ -68,7 +68,7 @@
             max_deposit_period: '10s',
             min_deposit: [
               {
-                denom: 'axfury',
+                denom: 'afury',
                 amount: '1',
               },
             ],
