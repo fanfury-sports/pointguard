@@ -24,12 +24,12 @@ import (
 
 // Testing Constants
 var (
-	chainId = "ethermint_9000-1"
+	chainId = "highbury_710-1"
 	ctx     = client.Context{}.WithTxConfig(
 		encoding.MakeConfig(app.ModuleBasics).TxConfig,
 	)
 )
-var feePayerAddress = "ethm17xpfvakm2amg962yls6f84z3kell8c5lthdzgl"
+var feePayerAddress = "fury17xpfvakm2amg962yls6f84z3kell8c5lqj20cj"
 
 type TestCaseStruct struct {
 	txBuilder              client.TxBuilder
@@ -66,7 +66,7 @@ func TestLedgerPreprocessing(t *testing.T) {
 		require.True(t, len(hasExtOptsTx.GetExtensionOptions()) == 1)
 
 		expectedExt := types.ExtensionOptionsWeb3Tx{
-			TypedDataChainID: 9000,
+			TypedDataChainID: 710,
 			FeePayer:         feePayerAddress,
 			FeePayerSig:      tc.expectedSignatureBytes,
 		}
@@ -199,7 +199,7 @@ func createPopulatedTestCase(t *testing.T) TestCaseStruct {
 
 	msgSend := banktypes.MsgSend{
 		FromAddress: feePayerAddress,
-		ToAddress:   "ethm12luku6uxehhak02py4rcz65zu0swh7wjun6msa",
+		ToAddress:   "fury12luku6uxehhak02py4rcz65zu0swh7wjhkakqs",
 		Amount: sdk.NewCoins(
 			sdk.NewCoin(
 				evmtypes.DefaultParams().EvmDenom,

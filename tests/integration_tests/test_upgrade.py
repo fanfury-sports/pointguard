@@ -36,7 +36,7 @@ def post_init(path, base_port, config):
     """
     prepare cosmovisor for each node
     """
-    chain_id = "ethermint_9000-1"
+    chain_id = "highbury_710-1"
     cfg = json.loads((path / chain_id / "config.json").read_text())
     for i, _ in enumerate(cfg["validators"]):
         home = path / chain_id / f"node{i}"
@@ -55,7 +55,7 @@ def post_init(path, base_port, config):
                 {
                     "command": f"cosmovisor start --home %(here)s/node{i}",
                     "environment": (
-                        f"DAEMON_NAME=ethermintd,DAEMON_HOME=%(here)s/node{i}"
+                        f"DAEMON_NAME=pointguard,DAEMON_HOME=%(here)s/node{i}"
                     ),
                 }
             )
@@ -80,7 +80,7 @@ def custom_ethermint(tmp_path_factory):
         26100,
         Path(__file__).parent / "configs/cosmovisor.jsonnet",
         post_init=post_init,
-        chain_binary=str(path / "upgrades/genesis/bin/ethermintd"),
+        chain_binary=str(path / "upgrades/genesis/bin/pointguard"),
     )
 
 
@@ -113,7 +113,7 @@ def test_cosmovisor_upgrade(custom_ethermint: Ethermint):
             "title": "upgrade test",
             "description": "ditto",
             "upgrade-height": target_height,
-            "deposit": "10000aphoton",
+            "deposit": "10000axfury",
         },
     )
     assert rsp["code"] == 0, rsp["raw_log"]
@@ -136,7 +136,7 @@ def test_cosmovisor_upgrade(custom_ethermint: Ethermint):
     # update cli chain binary
     custom_ethermint.chain_binary = (
         Path(custom_ethermint.chain_binary).parent.parent.parent
-        / f"{plan_name}/bin/ethermintd"
+        / f"{plan_name}/bin/pointguard"
     )
     cli = custom_ethermint.cosmos_cli()
 
